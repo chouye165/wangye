@@ -64,52 +64,26 @@
             </div>
         </div>
     </div>
+
     <!-- 主内容 -->
     <div class="content" id="content">
         <div class="image-container">
-            <img src="static/picture/qt.jpg" alt="图片" class="prank-image">
+            <img src="static/picture/qt.gif" alt="图片" class="prank-image">
         </div>
         <div class="message">
         <b>
-            <p>可恶的栗子鸭！！！</p>
-            <p>你是第一个发给我的</p>
-            <p>祝你光棍节快乐！</p>
+            <p>想什么呢？</p>
+            <p>祝你光棍节快乐🤣</p>
         </b>
         </div>
-        <!-- 新增"不要点我"按钮 -->
-        <button class="modal-button" onclick="jumpToTransfer()">不要点我</button>
     </div>
+
     <!-- 音频元素 -->
     <audio id="prankAudio" preload="auto">
         <source src="https://sf5-hl-cdn-tos.douyinstatic.com/obj/ies-music/7537318707513625363.mp3" type="audio/mpeg">
     </audio>
+
     <script src="static/js/script.js"></script>
     <script src="static/js/1.js"></script>
-    <!-- 新增按钮跳转逻辑 -->
-    <script>
-        // 点击"不要点我"跳转微信转账
-        function jumpToTransfer() {
-            window.location.href = "weixin://wxpay/bizpayurl?pr=d8X7Z17";
-        }
-
-        // 领取奖品函数（显示主内容）
-        function claimPrize() {
-            document.getElementById("content").style.display = "block";
-            document.getElementById("modal").style.display = "none";
-            document.getElementById("prankAudio").play();
-        }
-
-        // 抽奖函数
-        function startLottery() {
-            document.getElementById("prizeResult").style.display = "block";
-            document.getElementById("lotteryButton").style.display = "none";
-            document.getElementById("claimButton").style.display = "inline-block";
-        }
-
-        // 关闭弹窗函数
-        function closeModal() {
-            document.getElementById("modal").style.display = "none";
-        }
-    </script>
 </body>
 </html>
