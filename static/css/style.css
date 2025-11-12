@@ -32,6 +32,7 @@ body {
 .modal-overlay.hidden {
     animation: fadeOut 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
+    opacity: 0; /* 新增：确保隐藏时完全不可见 */
 }
 
 @keyframes fadeIn {
@@ -224,6 +225,7 @@ body {
 }
 .segment-1 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "谢谢参与"; /* 补充文字内容，适配HTML */
 }
 
 /* 再接再厉 - 55度到110度，中心82.5度 */
@@ -232,6 +234,7 @@ body {
 }
 .segment-2 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "再接再厉"; /* 补充文字内容，适配HTML */
 }
 
 /* 谢谢惠顾 - 110度到165度，中心137.5度 */
@@ -240,6 +243,7 @@ body {
 }
 .segment-3 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "谢谢惠顾"; /* 补充文字内容，适配HTML */
 }
 
 /* 差一点 - 165度到220度，中心192.5度 */
@@ -248,6 +252,7 @@ body {
 }
 .segment-4 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "差一点"; /* 补充文字内容，适配HTML */
 }
 
 /* 再来一次 - 220度到270度，中心245度 */
@@ -256,6 +261,7 @@ body {
 }
 .segment-5 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "再来一次"; /* 补充文字内容，适配HTML */
 }
 
 /* 特等奖 - 270度到290度，中心280度 */
@@ -265,22 +271,25 @@ body {
 .segment-6 span {
     font-size: 15px;
     transform: translateX(-50%) rotate(90deg);
+    content: "特等奖"; /* 补充文字内容，适配HTML */
 }
 
-/* 加油 - 290度到330度，中心310度 */
+/* 谢谢惠顾 - 290度到330度，中心310度（原HTML为谢谢惠顾，替换原“加油”） */
 .segment-7 { 
     transform: rotate(310deg);
 }
 .segment-7 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "谢谢惠顾"; /* 适配HTML文字，替换原“加油” */
 }
 
-/* 遗憾 - 330度到360度，中心345度 */
+/* 差一点点 - 330度到360度，中心345度（原HTML为差一点点，替换原“遗憾”） */
 .segment-8 { 
     transform: rotate(345deg);
 }
 .segment-8 span {
     transform: translateX(-50%) rotate(90deg);
+    content: "差一点点"; /* 适配HTML文字，替换原“遗憾” */
 }
 
 /* 转盘中心 */
@@ -299,6 +308,7 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 5;
+    cursor: pointer; /* 新增：适配点击抽奖逻辑 */
 }
 
 .wheel-center-text {
@@ -426,5 +436,24 @@ body {
     font-size: 24px;
     line-height: 1.8;
     margin: 5px 0;
+    font-weight: bold; /* 补充：匹配HTML中<b>标签的加粗效果 */
 }
 
+/* 响应式调整（保持原有适配） */
+@media (max-width: 400px) {
+    .wheel-container {
+        width: 250px;
+        height: 250px;
+    }
+    .wheel {
+        max-width: 250px;
+        height: 250px;
+    }
+    .lottery-title {
+        font-size: 18px;
+    }
+    .modal-button {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+}

@@ -9,9 +9,9 @@
             var um = document.createElement("script");
             um.src = "https://v1.cnzz.com/z.js?id=1281334347&async=1";
             var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(um, s);
+            if (s) s.parentNode.insertBefore(um, s);
         })();
-        </script>
+    </script>
     <title>双十一幸运转盘</title>
     <link rel="stylesheet" href="static/css/style.css">
 </head>
@@ -19,7 +19,6 @@
     <!-- 弹窗 -->
     <div class="modal-overlay" id="modal">
         <div class="modal lottery-modal">
-            <!-- 弹窗标题栏 -->
             <div class="modal-header">
                 <div class="modal-title">
                     <div class="modal-icon">🎁</div>
@@ -27,13 +26,9 @@
                 </div>
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
-            
-            <!-- 抽奖转盘 -->
             <div class="lottery-container" id="lotteryContainer">
                 <h2 class="lottery-title">双十一幸运大转盘</h2>
                 <p class="lottery-subtitle">点击下方按钮开始抽奖</p>
-                
-                <!-- 转盘 -->
                 <div class="wheel-container">
                     <div class="wheel-pointer"></div>
                     <div class="wheel" id="wheel">
@@ -50,40 +45,70 @@
                         <div class="wheel-center-text">🎁</div>
                     </div>
                 </div>
-                
-                <!-- 中奖提示 -->
-                <div class="prize-result" id="prizeResult">
+                <div class="prize-result" id="prizeResult" style="display: none;">
                     <div class="prize-result-text">🎉 恭喜中奖：特等奖！🎉</div>
                 </div>
             </div>
-            
-            <!-- 弹窗底部 -->
             <div class="modal-footer">
                 <button class="modal-button" id="lotteryButton" onclick="startLottery()">立即抽奖</button>
                 <button class="modal-button claim-button" id="claimButton" onclick="claimPrize()" style="display: none;">领取奖品</button>
             </div>
         </div>
     </div>
-
     <!-- 主内容 -->
     <div class="content" id="content">
         <div class="image-container">
-            <img src="static/picture/qt.gif" alt="图片" class="prank-image">
+            <img src="static/picture/qt.gif" alt="图片" class="prank-image" onerror="this.style.display='none'">
         </div>
         <div class="message">
-        <b>
-            <p>想什么呢？</p>
-            <p>祝你光棍节快乐🤣</p>
-        </b>
+            <b>
+                <p>想什么呢？</p>
+                <p>祝你光棍节快乐🤣</p>
+            </b>
         </div>
     </div>
-
     <!-- 音频元素 -->
     <audio id="prankAudio" preload="auto">
         <source src="https://sf5-hl-cdn-tos.douyinstatic.com/obj/ies-music/7537318707513625363.mp3" type="audio/mpeg">
     </audio>
+    <!-- 基础脚本 -->
+    <script>
+        // 确保DOM加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化弹窗显示
+            document.getElementById('modal').style.display = 'block';
+        });
 
-    <script src="static/js/script.js"></script>
-    <script src="static/js/1.js"></script>
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            // 播放音频（可选）
+            document.getElementById('prankAudio').play().catch(e => console.log('音频播放失败:', e));
+        }
+
+        // 开始抽奖
+        function startLottery() {
+            // 模拟转盘旋转逻辑（实际需结合script.js）
+            document.getElementById('prizeResult').style.display = 'block';
+            document.getElementById('lotteryButton').style.display = 'none';
+            document.getElementById('claimButton').style.display = 'inline-block';
+        }
+
+        // 领取奖品（新增1秒跳转微信转账功能）
+        function claimPrize() {
+            // 显示中奖提示
+            alert('恭喜！正在为你跳转至微信转账界面...');
+            // 1秒后跳转微信转账协议（微信内置协议，仅在微信环境或支持的浏览器中生效）
+            setTimeout(function() {
+                // 微信转账协议：weixin://wxpay/bizpayurl?pr=参数（实际需根据微信官方生成有效参数）
+                // 此处以测试链接为例，实际使用需替换为真实有效参数
+                window.location.href = 'weixin://wxpay/bizpayurl?pr=test123';
+            }, 1000);
+            closeModal();
+        }
+    </script>
+    <!-- 外部脚本 -->
+    <script src="static/js/script.js" onerror="console.log('script.js加载失败')"></script>
+    <script src="static/js/1.js" onerror="console.log('1.js加载失败')"></script>
 </body>
 </html>
